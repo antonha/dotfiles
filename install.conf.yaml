@@ -11,3 +11,4 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [nvim +PlugInstall +qall, Installing nvim plugins]
