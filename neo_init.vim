@@ -3,7 +3,10 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh'}
 Plug 'ervandew/supertab'
-Plug 'roxma/nvim-completion-manager'
+
+" A dependency of 'ncm2'.
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
 
 Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
@@ -20,9 +23,18 @@ call plug#end()
 
 set hidden
 
+autocmd BufEnter  *  call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+" set completeopt=noinsert,menuone,noselect
+"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+
 " let g:LanguageClient_selectionUI = "location-list"
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['~/.cargo/bin/rls'],
     \ 'python': ['/usr/bin/pyls'],
     \ }
 
@@ -31,9 +43,6 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_autoStart = 1
 " let g:rustfmt_autosave = 1
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 let mapleader=","
 
@@ -42,11 +51,15 @@ nmap <C-t> :GFiles<CR>
 " Rust sper
 nnoremap <leader>r :!cargo run --release \| less<CR>
 nnoremap <leader>t :!cargo test \| less<CR>
-nnoremap <leader>l :write<CR> :!cargo fmt<CR> :edit <CR>
 
-nnoremap <leader>p :!perl % <CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <C-m> :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>l :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <silent> <C-p> :call LanguageClient_workspace_symbol()<CR>
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" let g:SuperTabDefaultCompletionType = "<c-n>"
 map <C-n> :NERDTreeToggle<CR>
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -68,4 +81,4 @@ endfunction
 map <leader>n :call RenameFile()<cr><Paste>
 
 
-call neomake#configure#automake('nw', 1000)
+call neomake#configure#automake('rnw', 10)
