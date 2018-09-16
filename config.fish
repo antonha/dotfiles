@@ -1,4 +1,4 @@
-set -U fish_user_paths ~/.cargo/bin $fish_user_paths
+set -U fish_user_paths ~/.cargo/bin $fish_user_paths ~/.bin
 alias v=nvim
 
 set -xU VISUAL nvim

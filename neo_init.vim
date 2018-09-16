@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'thaerkh/vim-indentguides'
 
 Plug 'neomake/neomake'
 
@@ -57,6 +58,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <C-m> :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <leader>l :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <silent> <C-p> :call LanguageClient_workspace_symbol()<CR>
+nnoremap <silent> <A-cr> :call LanguageClient_textDocument_codeAction()<CR>
 
 
 " let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -80,5 +82,4 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr><Paste>
 
-
-call neomake#configure#automake('rnw', 10)
+call neomake#configure#automake('nw', 750)
