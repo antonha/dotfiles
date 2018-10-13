@@ -1,0 +1,12 @@
+{
+  "coc.preferences.diagnostic.warningSign": ">?",
+  "languageserver": {
+    "rls": {
+      "trace.server": "verbose",
+      "command": "rustup",
+      "args": ["run", "nightly","rls"],
+      "filetypes": ["rust"],
+      "settings": {}
+    }
+  }
+}
