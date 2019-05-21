@@ -10,6 +10,7 @@
     ~/.config/nvim/coc-settings.json: coc-settings.json
     ~/.config/fish/config.fish: config.fish 
     ~/.config/fish/functions: fish_functions 
+    ~/.config/alacritty/alacritty.yml: alacritty.yml
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
