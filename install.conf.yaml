@@ -11,6 +11,8 @@
     ~/.config/fish/config.fish: config.fish 
     ~/.config/fish/functions: fish_functions 
     ~/.config/alacritty/alacritty.yml: alacritty.yml
+    ~/.config/nvim/init.lua: nvim/init.lua
+    ~/.config/nvim/lua: nvim/lua
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

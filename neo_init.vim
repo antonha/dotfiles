@@ -1,17 +1,17 @@
 call plug#begin()
 Plug 'rust-lang/rust.vim' 
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'Shougo/denite.nvim'
+"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+"Plug 'Shougo/denite.nvim'
 
 "Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'ervandew/supertab'
 
 " A dependency of 'ncm2'.
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
+"Plug 'ncm2/ncm2'
 
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 
@@ -22,9 +22,9 @@ Plug 'thaerkh/vim-indentguides'
 " Plug 'neomake/neomake'
 Plug 'morhetz/gruvbox'
 
-Plug 'sakhnik/nvim-gdb'
+"Plug 'sakhnik/nvim-gdb'
 
-Plug 'hashivim/vim-terraform'
+"Plug 'hashivim/vim-terraform'
 
 
 call plug#end()
@@ -43,16 +43,6 @@ set completeopt=noinsert,menuone,noselect
 
 
 " let g:LanguageClient_selectionUI = "location-list"
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['/usr/bin/pyls'],
-    \ }
-
-" \ 'javascript' : ['/home/anton/.nvm/versions/node/v8.5.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio.js'],
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-" let g:rustfmt_autosave = 1
-
 
 let mapleader=","
 
