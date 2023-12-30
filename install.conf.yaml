@@ -16,6 +16,7 @@
     ~/.config/sway: sway
     ~/.config/foot: foot
     ~/.config/waybar: waybar
+    ~/.config/tofi: tofi
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

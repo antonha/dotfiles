@@ -5,9 +5,9 @@
     "id": "bar-0",
     // "height": 30, // Waybar height (to be removed for auto height)
     // Choose the order of the modules
-    "modules-left": ["clock", "sway/mode"],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": ["temperature", "battery",  "pulseaudio/slider", "tray"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["temperature", "battery", "pulseaudio/slider", "pulseaudio" , "tray", "clock"],
 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
