@@ -13,7 +13,9 @@
     ~/.config/alacritty/alacritty.yml: alacritty.yml
     ~/.config/nvim/init.lua: nvim/init.lua
     ~/.config/nvim/lua: nvim/lua
+    ~/.config/sway: sway
+    ~/.config/foot: foot
+    ~/.config/waybar: waybar
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [nvim +PlugInstall +qall, Installing nvim plugins]

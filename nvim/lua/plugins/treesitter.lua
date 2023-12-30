@@ -5,7 +5,8 @@ return {
     require("nvim-treesitter.configs").setup({
       highlight = {
        enable = true,
-    }
+     },
+     ensure_installed = { "markdown", "markdown_inline", "java", "typescript", "svelte", "lua"},
   })
   end
 }
