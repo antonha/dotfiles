@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["temperature", "battery", "pulseaudio/slider", "pulseaudio" , "tray", "clock"],
+    "modules-right": ["cpu", "temperature", "battery", "pulseaudio/slider", "pulseaudio" , "clock", "tray"],
 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -25,17 +25,18 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["奄", "奔", "墳"]
+            "default": [""]
         },
         "on-click": "pavucontrol",
         "min-length": 13,
     },
-
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}% ",
+        "max-length": 20
+    },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", "", "", ""],
         "tooltip": false,
@@ -47,10 +48,10 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", "", ""]
+        "format-icons": ["󱊡", "󱊢", "󱊣"]
     },
     "pulseaudio/slider": {
         "min": 0,

@@ -6,7 +6,7 @@
     border: none;
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Fira Code, monospace;
+    font-family: FiraCode Nerd Font, monospace;
     font-size: 16px;
 }
 
@@ -17,10 +17,15 @@ window#waybar {
 window#waybar.hidden {
 }
 
+.modules-left {
+  border-radius: 10px;
+}
+
+.modules-right {
+  border-radius: 10px;
+}
+
 #workspaces {
-    margin-right: 8px;
-    border-radius: 10px;
-    transition: none;
     color: @text;
     background: @mantle;
 }
@@ -51,45 +56,24 @@ window#waybar.hidden {
 }
 
 #mode {
-    border-radius: 10px;
-    margin-right: 8px;
     transition: none;
     font-weight: bolder;
     color: @text;
     background: @red;
 }
 
-#clock {
+
+
+#cpu {
     padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: @text;
+    padding-right: 8px;
+    color: #ffffff;
     background: @mantle;
 }
-
-
-#pulseaudio {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: @text;
-    background: @mantle;
-}
-
-#pulseaudio.muted {
-    background-color: @mantle;
-    color: #2a5c45;
-}
-
 
 #temperature {
-    margin-right: 8px;
-    padding-left: 16px;
+    padding-left: 8px;
     padding-right: 16px;
-    border-radius: 10px;
     transition: none;
     color: #ffffff;
     background: @mantle;
@@ -100,10 +84,8 @@ window#waybar.hidden {
 }
 
 #battery {
-    margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
     transition: none;
     color: @text;
     background: @mantle;
@@ -129,20 +111,9 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
-#tray {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: @text;
-    background: @mantle;
-}
-
 #pulseaudio-slider {
-    margin: 0 8px;
     color: @text;
     background: @mantle;
-    border-radius: 10px;
     min-width: 160px;
 }
 
@@ -165,6 +136,37 @@ window#waybar.hidden {
     border-radius: 5px;
     background-color: @green;
 }
+
+#pulseaudio {
+    padding-right: 16px;
+    transition: none;
+    color: @text;
+    background: @mantle;
+}
+
+#pulseaudio.muted {
+    background-color: @mantle;
+    color: #2a5c45;
+}
+
+
+
+#clock {
+    padding-left: 8px;
+    padding-right: 8px;
+    transition: none;
+    color: @text;
+    background: @mantle;
+}
+
+#tray {
+    padding-left: 8px;
+    padding-right: 8px;
+    transition: none;
+    color: @text;
+    background: @mantle;
+}
+
 
 @keyframes blink {
     to {
