@@ -111,6 +111,14 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
+#network {
+    padding-left: 16px;
+    padding-right: 16px;
+    transition: none;
+    color: @text;
+    background: @mantle;
+}
+
 #pulseaudio-slider {
     color: @text;
     background: @mantle;
