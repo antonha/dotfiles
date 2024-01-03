@@ -91,14 +91,13 @@ bindsym $mod+Return exec --no-startup-id foot
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec tofi-drun --font /usr/share/fonts/TTF/FiraCode-Medium.ttf --drun-launch=true
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
 #
-bindsym $mod+Ctrl+s exec "playerctl pause" exec "systemctl suspend"
+bindsym $mod+Ctrl+s exec "playerctl pause ; systemctl suspend"
 
 
 # change focus
@@ -144,6 +143,8 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space exec tofi-drun --font /usr/share/fonts/TTF/FiraCode-Medium.ttf --drun-launch=true
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
