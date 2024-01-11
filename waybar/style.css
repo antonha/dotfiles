@@ -154,7 +154,6 @@ window#waybar.hidden {
 
 #pulseaudio.muted {
     background-color: @mantle;
-    color: #2a5c45;
 }
 
 
