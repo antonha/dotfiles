@@ -1,0 +1,25 @@
+set surround
+set NERDTree
+set commentary
+
+set hlsearch                      " highlight search occurrences
+set ignorecase                    " ignore case in search patterns
+set smartcase                     " no ignore case when pattern is uppercase
+set incsearch                     " show search results while typing
+set wrapscan                      " searches wrap around the end of the file
+
+" set <leader> to <space>
+let mapleader = " "
+nmap <space> <Leader>
+
+" edit ideavim config
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+nnoremap <Space>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Space>f :action FileStructurePopup<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gD :action QuickImplementations<CR>
+nnoremap gt :action QuickTypeDefinition<CR>
+nnoremap [[ :action GotoNextError<CR>
+nnoremap ]] :action GotoPreviousError<CR>
