@@ -17,6 +17,8 @@
     ~/.config/foot: foot
     ~/.config/waybar: waybar
     ~/.config/tofi: tofi
+    ~/.config/dunst: dunst
+    ~/.zshrc: .zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

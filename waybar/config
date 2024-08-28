@@ -59,8 +59,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
+        "format": "{icon} {capacity}% ({time})",
+        "format-time":"{H}h{M}m",
+        "format-charging": "󰂄 {capacity}% ({time})",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["󱊡", "󱊢", "󱊣"]

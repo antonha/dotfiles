@@ -270,6 +270,7 @@ exec gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Stand
 
 exec swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'playerctl pause; swaylock -f -c 000000' 
 
+exec dunst
 exec blueman-applet
 
 
@@ -290,7 +291,8 @@ input type:keyboard {
 }
 
 # capture all screens to clipboard    
-bindsym $mod+Print exec grim - | wl-copy
+bindsym $mod+Print exec grim ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
+bindsym $mod+Print+Shift exec grim - | wl-copy
 
 # capture the specified screen area to clipboard    
 bindsym $mod+Alt+Print exec grim -g "$(slurp)" - | wl-copy
