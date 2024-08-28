@@ -10,7 +10,6 @@
     ~/.config/nvim/coc-settings.json: coc-settings.json
     ~/.config/fish/config.fish: config.fish 
     ~/.config/fish/functions: fish_functions 
-    ~/.config/alacritty/alacritty.yml: alacritty.yml
     ~/.config/nvim/init.lua: nvim/init.lua
     ~/.config/nvim/lua: nvim/lua
     ~/.config/sway: sway
@@ -19,6 +18,7 @@
     ~/.config/tofi: tofi
     ~/.config/dunst: dunst
     ~/.zshrc: .zshrc
+    ~/.ideavimrc: .ideavimrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
