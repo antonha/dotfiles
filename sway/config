@@ -17,12 +17,21 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Inconsolata 8
 # new_window normal 0 px
-default_border none
+default_border pixel 1
 
-output DP1 scale 2
+output DP-1 {
 
+  mode 5120x2160@120.000Hz
+}
 
-hide_edge_borders both
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+focus_follows_mouse no
+
+gaps inner 10
+smart_borders on
+smart_gaps on
+
+# hide_edge_borders both
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)
 #
@@ -84,6 +93,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id foot
 
+
 # chromium
 # bindsym $mod+c exec chromium 
 
@@ -97,7 +107,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
 #
-bindsym $mod+Ctrl+s exec "playerctl pause ; systemctl suspend"
+bindsym --locked $mod+Ctrl+s exec "playerctl pause ; systemctl suspend"
 
 
 # change focus
@@ -291,14 +301,16 @@ input type:keyboard {
 }
 
 # capture all screens to clipboard    
-bindsym $mod+Print exec grim ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
-bindsym $mod+Print+Shift exec grim - | wl-copy
+#bindsym $mod+z exec grim ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
+#bindsym $mod+Shift+z exec grim - | wl-copy
 
 # capture the specified screen area to clipboard    
-bindsym $mod+Alt+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+z exec grim -g "$(slurp)" - | wl-copy
 
-bindsym $mod+Alt+Print+Shift exec grim -g "$(slurp)" ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
+#bindsym $mod+Alt+z+Shift exec grim -g "$(slurp)" ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
 
 
 
 for_window [app_id="(?i)(?:blueman-manager)"] floating enable
+
+exec --no-startup-id 'swaybg -i ~/.config/sway/sunset.png'
