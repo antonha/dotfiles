@@ -26,8 +26,5 @@ return {
     },
 
     -- see below for full list of options 👇
-  },
-  config = function ()
-    require("obsidian").setup()
-  end
+  }
 }

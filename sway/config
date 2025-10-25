@@ -20,16 +20,25 @@ font pango:Inconsolata 8
 default_border pixel 1
 
 output DP-1 {
-
   mode 5120x2160@120.000Hz
 }
 
+# default_border none
+
+output DP-1 scale 1
+
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+
 for_window [shell="xwayland"] title_format "[XWayland] %title"
-focus_follows_mouse no
 
 gaps inner 10
 smart_borders on
 smart_gaps on
+
+focus_follows_mouse no
 
 # hide_edge_borders both
 ## Base16 Default Dark
@@ -108,6 +117,7 @@ bindsym $mod+Shift+q kill
 #
 #
 bindsym --locked $mod+Ctrl+s exec "playerctl pause ; systemctl suspend"
+bindsym $mod+Ctrl+n exec "swaylock -f -c 000000"
 
 
 # change focus
@@ -138,10 +148,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+s split h
+bindsym $mod+Shift+s splith
 
 # split in vertical orientation
-bindsym $mod+Shift+v split v
+bindsym $mod+Shift+v splitv
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -307,10 +317,10 @@ input type:keyboard {
 # capture the specified screen area to clipboard    
 bindsym $mod+z exec grim -g "$(slurp)" - | wl-copy
 
-#bindsym $mod+Alt+z+Shift exec grim -g "$(slurp)" ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
+bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
 
 
 
 for_window [app_id="(?i)(?:blueman-manager)"] floating enable
 
-exec --no-startup-id 'swaybg -i ~/.config/sway/sunset.png'
+exec --no-startup-id 'swaybg -i ~/.config/sway/sunset.png -m fill'

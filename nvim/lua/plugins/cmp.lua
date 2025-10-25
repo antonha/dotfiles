@@ -1,50 +1,69 @@
 return {
-    "hrsh7th/nvim-cmp",
-    -- load cmp on InsertEnter
-    event = "InsertEnter",
-    -- these dependencies will only be loaded when cmp loads
-    -- dependencies are always lazy-loaded unless specified otherwise
+  {
+    "saghen/blink.compat",
+    version = "*",
+    lazy = true,
+    opts = {},
+  },
+  {
+    "saghen/blink.cmp",
+    version = "*",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-vsnip",
-	"hrsh7th/vim-vsnip"
-
-
+      "rafamadriz/friendly-snippets",
+      "rcarriga/cmp-dap",
+      "saghen/blink.compat",
     },
-    config = function()
-		local cmp = require('cmp')
-		cmp.setup({
-		 snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
+    event = "InsertEnter",
+    opts = {
+    keymap = {
+      preset = "default",
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
+      ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<C-e>"] = { "hide", "fallback" },
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-f>"] = { "scroll_documentation_down", "fallback" },
     },
-    window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      nerd_font_variant = "mono",
     },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
-    }, {
-      { name = 'buffer' },
-    })
-  })
-
+    enabled = function()
+      return vim.bo.buftype ~= "prompt" or require("cmp_dap").is_dap_buffer()
     end,
+    sources = {
+      default = function()
+        if require("cmp_dap").is_dap_buffer() then
+          return { "dap", "snippets", "buffer" }
+        else
+          return { "lsp", "path", "snippets", "buffer" }
+        end
+      end,
+      providers = {
+        dap = { name = "dap", module = "blink.compat.source" },
+      },
+    },
+    completion = {
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      menu = {
+        draw = {
+          treesitter = { "lsp" },
+        },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+      },
+    },
+    signature = {
+      enabled = true,
+    },
+  },
+  opts_extend = { "sources.default" },
+  },
 }

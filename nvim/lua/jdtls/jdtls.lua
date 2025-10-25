@@ -24,8 +24,8 @@ function M.setup()
   local path_to_config = path_to_jdtls .. "/config_linux"
   local lombok_path = path_to_jdtls .. "/lombok.jar"
 
-  local path_to_jar_list = vim.fn.glob("/plugins/org.eclipse.equinox.launcher_1.*.jar", true, true)
-  local path_to_jar = path_to_jar_list[#path_to_jar_list+1]
+  local path_to_jar_list = vim.fn.glob(path_to_jdtls .. "/plugins/org.eclipse.equinox.launcher_*.jar", true, true)
+  local path_to_jar = path_to_jar_list[#path_to_jar_list]
 
   local bundles = {
     vim.fn.glob(path_to_jdebug .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", true),
@@ -43,18 +43,6 @@ function M.setup()
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
       vim.lsp.buf.format()
     end, { desc = "Format current buffer with LSP" })
-
-    require("lsp_signature").on_attach({
-      bind = true,
-      padding = "",
-      handler_opts = {
-        border = "rounded",
-      },
-      hint_prefix = "󱄑 ",
-    }, bufnr)
-
-    -- NOTE: comment out if you don't use Lspsaga
-    require 'lspsaga'.init_lsp_saga()
 
   end
 

@@ -8,6 +8,7 @@ bindkey '^R' history-incremental-search-backward
 alias ..='cd ..'
 alias v=nvim
 alias ls='ls --color=auto'
+alias ll='ls -al --color=auto'
 
 autoload colors && colors
 eval "$(dircolors)"
@@ -17,6 +18,7 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export MOZ_ENABLE_WAYLAND=1
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export PATH="$PATH:~/.cargo/bin"
 
 
 case $TERM in
@@ -39,8 +41,10 @@ esac
 
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=999999999
+SAVEHIST=999999999
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
 setopt appendhistory
 
 
