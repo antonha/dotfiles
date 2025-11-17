@@ -1,13 +1,14 @@
 return {
   {
-    "ellisonleao/gruvbox.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("gruvbox").setup({
-        contrast = "hard", -- can be "hard", "soft" or empty string
+      require("catppuccin").setup({
+        flavour = "mocha", -- latte, frappe, macchiato, mocha
       })
-      vim.cmd([[colorscheme gruvbox]])
+      vim.cmd([[colorscheme catppuccin]])
     end,
   }
 }

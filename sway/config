@@ -317,7 +317,8 @@ input type:keyboard {
 #bindsym $mod+Shift+z exec grim - | wl-copy
 
 # capture the specified screen area to clipboard    
-bindsym $mod+z exec grim -g "$(slurp)" - | wl-copy
+# bindsym $mod+z exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+z exec grim -g "$(slurp)" - | wl-copy  --type image/png
 
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Pictures/$(date +'%H%M%S-%Y-%m-%d.png') 
 

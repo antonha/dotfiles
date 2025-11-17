@@ -5,6 +5,19 @@ return {
     config = function()
       local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
       require("dap-python").setup(python)
+
+      -- Add auto-reload configuration
+      local dap = require("dap")
+      table.insert(dap.configurations.python, {
+        type = 'python',
+        request = 'launch',
+        program = '${file}',
+        console = 'integratedTerminal',
+        name = 'Launch file with autoReload',
+        autoReload = {
+          enable = true,
+        }
+      })
     end,
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -21,8 +34,10 @@ return {
       local dap = require("dap")
       local dapui = require("dapui")
 
-      -- Setup DAP UI
-      dapui.setup()
+      -- Setup DAP UI with borders
+      dapui.setup({
+        borders = "rounded",
+      })
 
     -- Auto open/close DAP UI
     dap.listeners.before.attach.dapui_config = function()
@@ -31,12 +46,13 @@ return {
     dap.listeners.before.launch.dapui_config = function()
       dapui.open()
     end
-    dap.listeners.before.event_terminated.dapui_config = function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function()
-      dapui.close()
-    end
+    -- Don't auto-close on termination/exit so you can see crash info
+    -- dap.listeners.before.event_terminated.dapui_config = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited.dapui_config = function()
+    --   dapui.close()
+    -- end
 
     -- Keybindings
     vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })

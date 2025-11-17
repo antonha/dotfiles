@@ -16,27 +16,12 @@ return {
 
     require('mason-lspconfig').setup({
       ensure_installed = {
-        "pyright",  -- Python LSP
         "lua_ls",   -- Lua LSP
       },
       handlers = {
         function (server_name) -- default handler (optional)
             require("lspconfig")[server_name].setup {
               capabilities = capabilities,
-            }
-        end,
-        ["pyright"] = function ()
-            require("lspconfig").pyright.setup {
-              capabilities = capabilities,
-              settings = {
-                python = {
-                  analysis = {
-                    typeCheckingMode = "basic",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                  }
-                }
-              }
             }
         end,
       }

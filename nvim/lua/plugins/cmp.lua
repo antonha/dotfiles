@@ -17,7 +17,7 @@ return {
     opts = {
     keymap = {
       preset = "default",
-      ["<Tab>"] = { "select_next", "fallback" },
+      ["<Tab>"] = { "accept", "fallback" },
       ["<S-Tab>"] = { "select_prev", "fallback" },
       ["<CR>"] = { "accept", "fallback" },
       ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
@@ -54,14 +54,21 @@ return {
         draw = {
           treesitter = { "lsp" },
         },
+        border = "rounded",
       },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 200,
+        window = {
+          border = "rounded",
+        },
       },
     },
     signature = {
       enabled = true,
+      window = {
+        border = "rounded",
+      },
     },
   },
   opts_extend = { "sources.default" },
