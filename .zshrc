@@ -18,7 +18,7 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export MOZ_ENABLE_WAYLAND=1
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-export PATH="$PATH:~/.cargo/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 
 case $TERM in
